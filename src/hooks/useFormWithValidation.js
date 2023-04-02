@@ -6,22 +6,14 @@ export function useFormWithValidation() {
   const [isValid, setIsValid] = React.useState(false);
 
   const valConfig = {
-    name: {
-      pattern: /^[A-Za-zА-Яа-яЁё /s -]+$/,
-      error: 'Имя может содержать только латиницу, кириллицу, пробел или дефис.'
-    },
     email: {
       pattern: /\S+@\S+\.\S+/,
       error: 'Некорректный email.'
     },
     password: {
-      pattern: /^[\da-zA-Z]{5,}$/,
-      error: 'Пароль должен содержать минимум 5 символов.'
+      pattern: /^[\da-zA-Z]{8,}$/,
+      error: 'Без кириллицы минимум 8 символов.'
     },
-    film: {
-      pattern: /[\d\w\u0430-\u044f]+/ig,
-      error: 'Введите назнание фильма'
-    }
   };
 
   const setCustomValidationMessages = (name, value) => {

@@ -1,9 +1,10 @@
+import './MainScreen.css'
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Header from '../Header/Header';
 import { addFavoriteAction, delFavoriteAction } from '../../store/favoriteHotelsReducer';
+import Header from '../Header/Header';
 import Hotels from '../Hotels/Hotels';
-
+import Button from '../Button/Button';
 
 export default function MainScreen({ handleSignout }) {
 
@@ -13,35 +14,43 @@ export default function MainScreen({ handleSignout }) {
 
   const addFavorite = (hotel) => {
     console.log(hotel)
-    dispatch(addFavoriteAction(hotel))
+    dispatch(addFavoriteAction(hotel));
   }
 
   const delFavorite = (hotelId) => {
     console.log(hotelId)
-    delFavoriteAction(hotelId)
+    dispatch(delFavoriteAction(hotelId));
+  }
+
+  const handleSearch = (evt) => {
+    evt.preventDefault();
   }
 
   return (
     <>
     <Header handleSignout={handleSignout}/>
-    <main className="login" style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '70px' }}>
-      <Hotels
-        hotels={hotels}
-        favorites={favorites}
-        addFavorite={addFavorite}
-        delFavorite={delFavorite}
-      />
-      <div className="side-container">
-        <form action="#" className="search-form" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '200px' }}>
+    <main className="login" style={{ display: 'flex', justifyContent: 'space-around', paddingTop: '32px' }}>
+    <div className="side-container">
+        <form action="#" className="search-form">
+          <label for="city">Локация</label>
           <input type="text" id="city" />
+          <label for="chekin-date">Дата заселения</label>
           <input type="date" id="chekin-date" />
+          <label for="duration">Количество дней</label>
           <input type="text" id="duration" />
+          <Button
+            name={'Найти'}
+            selector={'button'}
+            type={'submit'}
+            isDisabled={false}
+            handleClick={handleSearch}
+          />
         </form>
-        <div className="favorites" style={{ display: 'flex', flexDirection: 'column', alignItems: 'start', marginTop: '100px' }}>
+        <div className="favorites">
           <h3>Favorites</h3>
           <p>Here'll be filters</p>
           {console.log('fav', favorites)}
-          <ol>
+          <ul style={{ listStyle: 'none', padding: 0}}>
             {favorites.length !== 0 ?
               favorites.map(hotel => (
                 <li key={hotel.hotelId}>
@@ -53,9 +62,15 @@ export default function MainScreen({ handleSignout }) {
               )) :
               <p>Nothing</p>
             }
-          </ol>
+          </ul>
         </div>
       </div>
+      <Hotels
+        hotels={hotels}
+        favorites={favorites}
+        addFavorite={addFavorite}
+        delFavorite={delFavorite}
+      />
     </main>
     </>
   )

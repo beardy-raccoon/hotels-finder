@@ -1,5 +1,7 @@
+import './LoginScreen.css';
 import React from 'react';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
+import Button from '../Button/Button';
 
 export default function LoginScreen(props) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
@@ -15,32 +17,36 @@ export default function LoginScreen(props) {
 
   return (
     <main className="signin">
-      <div className="form form_signin">
+      <div className="signin__overlay"></div>
+      <div className="card signin__form">
         <h1 className="form__title">Simple Hotel Check</h1>
         <form className="form__content" onSubmit={handleFormSubmit}>
-          <label className="form__label" htmlFor="email">E-mail</label>
+          <label className={`form__label ${errors.email && 'form__label_error'}`} htmlFor="email">Логин</label>
           <input
             className={`input form__input ${errors.email && 'form__input_error'}`}
             type="email"
-            placeholder="Email"
             name="email"
             autoComplete="email"
             value={values.email || ""}
             onChange={handleChange}
             required />
           <span className="input__error-text">{errors.email || ''}</span>
-          <label className="form__label" htmlFor="password">Пароль</label>
+          <label className={`form__label ${errors.password && 'form__label_error'}`} htmlFor="password">Пароль</label>
           <input
             className={`input form__input ${errors.password && 'form__input_error'}`}
             type="password"
-            placeholder="Пароль"
             name="password"
             autoComplete="current-password"
             value={values.password || ""}
             onChange={handleChange}
             required />
           <span className="input__error-text">{errors.password || ''}</span>
-          <button type="submit" aria-label="Войти" className={`button form__submit-button ${!isValid && 'form__submit-button_disabled'}`} disabled={!isValid}>Войти</button>
+          <Button
+            name={"Войти"}
+            selector={`button form__button ${!isValid && 'form__button_disabled'}`}
+            isDisabled={!isValid}
+            type="submit"
+          />
         </form>
       </div>
     </main>
