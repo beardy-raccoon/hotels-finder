@@ -1,0 +1,21 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 472px;
+}
+
+.hotels__list_favorites {
+  list-style: none;
+  max-height: 290px;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.hotel__button-container_favorites {
+  margin-left: 0;
+}
+
+.hotel__info-container_favorites {
+  width: 210px;
+}

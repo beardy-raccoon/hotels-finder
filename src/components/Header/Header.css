@@ -1,5 +1,42 @@
 .header {
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding: 32px;
+  box-sizing: border-box;
+}
+
+.header__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.header__button {
+  margin-right: 35px;
+  background-color: transparent;
+  color: #41522E;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  transition: opacity .9s;
+}
+
+.header__button::after {
+  content: '';
+  background-image: url(../../assets/images/log-out.png);
+  background-size: contain;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin-left: 15px;
+}
+
+.header__button:hover {
+  opacity: .8;
+  transition: opacity .3s;
 }

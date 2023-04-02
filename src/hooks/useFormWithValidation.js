@@ -8,17 +8,18 @@ export function useFormWithValidation() {
   const valConfig = {
     email: {
       pattern: /\S+@\S+\.\S+/,
-      error: 'Некорректный email.'
+      error: 'Некорректный email'
     },
     password: {
       pattern: /^[\da-zA-Z]{8,}$/,
-      error: 'Без кириллицы минимум 8 символов.'
+      error: 'Без кириллицы минимум 8 символов'
     },
   };
 
   const setCustomValidationMessages = (name, value) => {
     if (!valConfig[name].pattern.test(value)) {
       setErrors({ ...errors, [name]: valConfig[name].error });
+      setIsValid(false);
     }
   };
 

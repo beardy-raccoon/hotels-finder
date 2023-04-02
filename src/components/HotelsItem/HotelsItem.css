@@ -1,0 +1,101 @@
+.hotel__container {
+  display: flex;
+  border-bottom: 1px solid rgba(135, 135, 135, 0.2);
+}
+
+.hotel__logo {
+  width: 64px;
+  height: 64px;
+  background-color: rgba(65, 82, 46, 0.05);
+  background-image: url(../../assets/images/house.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  margin: 19px 24px 16px 0;
+}
+
+.hotel__info-container {
+  display: flex;
+  flex-direction: column;
+  width: 255px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 19px;
+}
+
+.hotel__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #424242;
+}
+
+.hotel__duration {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #878787;
+}
+
+.hotel__rating {
+  color: #CDBC1E;
+}
+
+.hotel__button-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 116px;
+}
+
+.hotel__button {
+  height: 19px;
+  width: 19px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  align-self: flex-end;
+}
+
+.hotel__button_add {
+  background-image: url(../../assets/images/like.svg);
+}
+
+.hotel__button_del {
+  background-image: url(../../assets/images/like-active.svg);
+}
+
+.hotel__button:hover {
+  background-image: url(../../assets/images/like-hover.svg);
+}
+
+.hotel__price-container {
+  display: flex;
+  margin-top: 22px;
+}
+
+.hotel__price {
+  margin-right: 8px;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #878787;
+}
+
+.hotel__price-value {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #424242;
+  width: 71px;
+}
