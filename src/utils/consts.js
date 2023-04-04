@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://engine.hotellook.com/api/v2/cache.json?';

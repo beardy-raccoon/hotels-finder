@@ -1,6 +1,5 @@
 const defaultState = {
   hotels: [],
-  favorites: [],
 }
 
 export const FETCH_HOTELS = "FETCH_HOTELS"
@@ -14,5 +13,5 @@ export const hotelsReducer = (state = defaultState, action) => {
       return state
   }
 }
-export const fetchHotels = () => ({ type: FETCH_HOTELS });
+export const fetchHotels = (query) => ({ type: FETCH_HOTELS, query });
 export const setHotelsAction = (payload) => ({ type: SET_HOTELS, payload });

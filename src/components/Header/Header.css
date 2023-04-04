@@ -28,8 +28,10 @@
 
 .header__button::after {
   content: '';
-  background-image: url(../../assets/images/log-out.png);
+  background-image: url(../../assets/images/logout-min.svg);
+  background-position: center;
   background-size: contain;
+  background-repeat: no-repeat;
   width: 18px;
   height: 18px;
   position: absolute;

@@ -3,12 +3,12 @@ import React from 'react';
 import { useFormWithValidation } from '../../hooks/useFormWithValidation';
 import Button from '../Button/Button';
 
-export default function LoginScreen(props) {
+export default function LoginScreen({ handleLogin }) {
   const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    props.handleLogin(values.email, values.password);
+    handleLogin(values.email, values.password);
   };
 
   React.useEffect(() => {

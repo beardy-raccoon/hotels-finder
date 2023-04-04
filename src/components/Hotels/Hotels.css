@@ -1,9 +1,32 @@
-.hotels {
+.card_hotels {
   width: 664px;
-  max-height: 902px;
+  max-height: 906px;
+  padding: 48px 32px 52px 32px;
 }
 
 .hotel__title-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.hotels__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  color: #424242;
+}
+
+.hotels__favorite-counter {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #424242;
+  margin: 0;
 }

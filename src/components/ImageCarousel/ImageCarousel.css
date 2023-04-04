@@ -1,5 +1,16 @@
 .image-carousel-container {
-  height: 150px;
-  width: 100%;
-  background-color: aquamarine;
+  max-width: 600px;
+  padding: 28px 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 12px;
+  box-sizing: border-box;
+  overflow: scroll;
+}
+
+.image-carousel__image {
+  min-width: 164px;
+  height: 149px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
 }

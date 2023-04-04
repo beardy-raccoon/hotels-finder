@@ -3,13 +3,15 @@ import { applyMiddleware, combineReducers, legacy_createStore as createStore } f
 import { hotelsWatcher } from '../saga/hotelsSaga';
 import { favoriteHotelsReducer } from './favoriteHotelsReducer';
 import { hotelsReducer } from './hotelsReducer';
+import { queryReducer } from './queryReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const rootReducer = combineReducers(
   {
     favorites: favoriteHotelsReducer,
-    hotels: hotelsReducer
+    hotels: hotelsReducer,
+    query: queryReducer,
   }
 )
 
