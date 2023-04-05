@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './SearchWidget.css';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
@@ -26,6 +26,14 @@ export default function SearchWidget() {
     dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: checkoutDate }))
     dispatch(setQueryAction(query));
   }
+
+  const firstFetch = () => dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: getCheckoutDate(query.checkinDate, query.duration) }))
+
+  useEffect(() => {
+    firstFetch();
+    console.log('1st fetch in widget');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="search-widget card card_search-widget">
