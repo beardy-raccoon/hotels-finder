@@ -12,6 +12,7 @@
   background-repeat: no-repeat;
   border-radius: 50%;
   margin: 19px 24px 16px 0;
+  align-self: center;
 }
 
 .hotel__info-container {
@@ -20,7 +21,6 @@
   width: 255px;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-top: 19px;
 }
 
 .hotel__title {
@@ -44,7 +44,22 @@
 }
 
 .hotel__rating {
-  color: #CDBC1E;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 5px 0 16px;
+}
+
+.hotel__star {
+  background-image: url(../../assets/images/star-min.svg);
+  width: 17px;
+  height: 17px;
+}
+
+.hotel__star_active {
+  background-image: url(../../assets/images/star-active-min.svg);
+  width: 17px;
+  height: 17px;
 }
 
 .hotel__button-container {
@@ -61,6 +76,7 @@
   background-repeat: no-repeat;
   background-size: contain;
   align-self: flex-end;
+  margin-right: 8px;
 }
 
 .hotel__button_add {
@@ -98,4 +114,5 @@
   letter-spacing: -0.408px;
   color: #424242;
   width: 71px;
+  text-align: right;
 }

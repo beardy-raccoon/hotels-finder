@@ -1,4 +1,4 @@
-import './Favorites.css';
+import './FavoritesWidget.css';
 import React, { useState } from 'react';
 import HotelsList from '../HotelsList/HotelsList';
 import { useDispatch, useSelector } from 'react-redux';

@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import MainScreen from '../MainScreen/MainScreen';
 import LoginScreen from '../LoginScreen/LoginScreen';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -17,7 +17,6 @@ function App() {
   const query = useSelector(state => state.query.query);
   const favorites = useSelector(state => state.favorites.favorites);
   const dispatch = useDispatch();
-  const push = useNavigate();
 
   const handleLogin = () => {
     localStorage.setItem('authorized', true);
@@ -25,10 +24,12 @@ function App() {
   }
 
   const handleSignout = () => {
+    dispatch(setFavoritesAction([]));
     localStorage.removeItem('authorized');
-    localStorage.setItem('storedFavorites', JSON.stringify([]));
+    localStorage.removeItem('storedFavorites');
     setIsLoggedIn(false);
-    push('/')
+    console.log('storage', JSON.parse(localStorage.getItem('storedFavorites')))
+    console.log('store', favorites)
   }
 
   const firstFetch = () => dispatch(fetchHotels(`${BASE_URL}location=${query.city}&currency=rub&checkIn=${query.checkinDate}&checkOut=${getCheckoutDate(query.checkinDate, query.duration)}&limit=30`))
@@ -40,9 +41,9 @@ function App() {
     const storedData = JSON.parse(localStorage.getItem('storedFavorites'));
     if (storedData) {
       dispatch(setFavoritesAction(storedData));
-    } else {
-      localStorage.removeItem('storedFavorites');
-    }
+    } /*else {
+
+    }*/
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

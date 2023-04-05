@@ -1,11 +1,11 @@
 .image-carousel-container {
   max-width: 600px;
-  padding: 28px 0;
   display: flex;
   justify-content: flex-start;
   gap: 12px;
   box-sizing: border-box;
   overflow: scroll;
+  margin-top: 28px;
 }
 
 .image-carousel__image {

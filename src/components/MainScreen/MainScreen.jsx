@@ -1,8 +1,8 @@
 import './MainScreen.css'
 import React from 'react';
 import Header from '../Header/Header';
-import HotelsWidget from '../Hotels/HotelsWidget';
-import FavoritesWidget from '../Favorites/FavoritesWidget';
+import HotelsWidget from '../HotelsWidget/HotelsWidget';
+import FavoritesWidget from '../FavoritesWidget/FavoritesWidget';
 import SearchWidget from '../SearchWidget/SearchWidget';
 
 export default function MainScreen({ handleSignout }) {

@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import modifyDate from '../../utils/dateModifier';
 import modifyString from '../../utils/stringModifier';
+import getRating from '../../utils/getRating';
 
 
 export default function HotelsItem({ hotel, isFavorites, favorites, handleAddFavotite, handleDelFavorite }) {
@@ -20,7 +21,11 @@ export default function HotelsItem({ hotel, isFavorites, favorites, handleAddFav
             :
             <p className="hotel__duration">{`${modifyDate(query.checkinDate, 'ru')} - ${modifyString(query.duration, 'день')}`}</p>
           }
-          <div className="hotel__rating">{`Stars: ${hotel.stars}`}</div>
+          <ul className="hotel__rating">
+            {getRating(hotel).map((item, i) =>
+              (<li className={`${item === 1 ? 'hotel__star_active' : 'hotel__star'}`} key={i}></li>)
+            )}
+          </ul>
         </div>
         <div className={`hotel__button-container ${isFavorites ? 'hotel__button-container_favorites' : ''}`}>
           {favorites?.find(item => item.hotelId === hotel.hotelId) ?

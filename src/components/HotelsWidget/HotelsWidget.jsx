@@ -1,4 +1,4 @@
-import './Hotels.css'
+import './HotelsWidget.css'
 import React from "react";
 import { useSelector } from 'react-redux';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
@@ -13,14 +13,20 @@ export default function HotelsWidget({ isFavorites }) {
 
   return (
     <div className="card card_hotels">
-      <div className="hotel__title-container">
-        <h2 className="hotels__title">
-          {`Отели > ${query.city}`}
-        </h2>
+      <div className="hotels__title-container">
+        <div className="hotels__group-container">
+          <h2 className="hotels__title">Отели</h2>
+          <span className="hotels__arrow"></span>
+          <span className="hotels__title">{query.city}</span>
+        </div>
         <p className="hotels__subtitle">{`${modifyDate(query.checkinDate, 'ru')}`}</p>
       </div>
       <ImageCarousel />
-      <p className="hotels__favorite-counter">{`Добавлено в Избранное: ${modifyString(favorites.length)}`}</p>
+      <div className="hotels__favorite-counter-container">
+        <p className="hotels__favorite-counter">Добавлено в Избранное:</p>
+        <span className="hotels__count">{favorites.length}</span>
+        <span className="hotels__favorite-counter">{modifyString(favorites.length)}</span>
+      </div>
       <HotelsList
         isFavorites={isFavorites}
         hotels={hotelsToShow}
