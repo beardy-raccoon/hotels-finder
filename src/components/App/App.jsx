@@ -15,6 +15,7 @@ function App() {
   const authorized = localStorage.getItem('authorized');
   const query = useSelector(state => state.query.query);
   const favorites = useSelector(state => state.favorites.favorites);
+  //const hotels = useSelector(state => state.hotels.hotels);
   const dispatch = useDispatch();
 
   const handleLogin = () => {
@@ -31,8 +32,11 @@ function App() {
 
   const firstFetch = () => dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: getCheckoutDate(query.checkinDate, query.duration) }))
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => firstFetch, []);
+  useEffect(() => {
+    firstFetch();
+    console.log('1st fetch in APP');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('storedFavorites'));
