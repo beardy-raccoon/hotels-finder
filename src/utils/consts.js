@@ -15,4 +15,4 @@ export const SET_QUERY = "SET_QUERY";
 export const FETCH_HOTELS = "FETCH_HOTELS";
 export const SET_HOTELS = "SET_HOTELS";
 
-export const BASE_URL = 'http://engine.hotellook.com/api/v2/cache.json?';
+export const BASE_URL = '/api/cache.json?';
