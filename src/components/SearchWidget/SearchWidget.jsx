@@ -36,7 +36,7 @@ export default function SearchWidget() {
   };
   // useEffect обработает при первой загрузке компонента или перезагрузке страницы
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => searchHandler, []);
+  useEffect(() => searchHandler(), []);
 
   return (
     <div className="search-widget card card_search-widget">
