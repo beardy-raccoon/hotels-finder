@@ -21,30 +21,22 @@ export default function SearchWidget() {
     });
   }
 
-  const handleSearch = (evt) => {
-    evt.preventDefault();
-
+  const searchHandler = () => {
     dispatch(fetchHotelsAction({
       city: query.city,
       checkinDate: query.checkinDate,
       checkoutDate: checkoutDate
     }));
-
     dispatch(setQueryAction(query));
   };
 
-  // Функция запроса к api при первой загрузке страницы с дефолтными данными
-  const firstFetch = () => dispatch(
-    fetchHotelsAction(
-      {
-        city: query.city,
-        checkinDate: query.checkinDate,
-        checkoutDate: getCheckoutDate(query.checkinDate, query.duration)
-      }
-    ));
+  const handleSearch = (evt) => {
+    evt.preventDefault();
+    searchHandler();
+  };
   // useEffect обработает при первой загрузке компонента или перезагрузке страницы
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => firstFetch, []);
+  useEffect(() => searchHandler, []);
 
   return (
     <div className="search-widget card card_search-widget">
