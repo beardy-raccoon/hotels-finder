@@ -1,9 +1,8 @@
+import { FETCH_HOTELS, SET_HOTELS } from "../utils/consts";
+
 const defaultState = {
   hotels: [],
 }
-
-export const FETCH_HOTELS = "FETCH_HOTELS"
-export const SET_HOTELS = "SET_HOTELS";
 
 export const hotelsReducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -13,5 +12,5 @@ export const hotelsReducer = (state = defaultState, action) => {
       return state
   }
 }
-export const fetchHotels = (query) => ({ type: FETCH_HOTELS, query });
+export const fetchHotelsAction = (query) => ({ type: FETCH_HOTELS, query });
 export const setHotelsAction = (payload) => ({ type: SET_HOTELS, payload });

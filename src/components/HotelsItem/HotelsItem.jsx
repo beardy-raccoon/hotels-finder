@@ -1,5 +1,5 @@
-import './HotelsItem.css';
 import React from 'react';
+import './HotelsItem.css';
 import { useSelector } from 'react-redux';
 import modifyDate from '../../utils/dateModifier';
 import modifyString from '../../utils/stringModifier';

@@ -1,4 +1,5 @@
 import React from "react";
+import './Button.css';
 
 export default function Button({ name, selector, type, isDisabled, handleClick }) {
   return (
@@ -10,5 +11,5 @@ export default function Button({ name, selector, type, isDisabled, handleClick }
       disabled={isDisabled}>
       {name}
     </button>
-  )
+  );
 }

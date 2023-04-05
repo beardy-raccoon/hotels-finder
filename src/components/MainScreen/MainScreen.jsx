@@ -1,5 +1,5 @@
-import './MainScreen.css'
 import React from 'react';
+import './MainScreen.css'
 import Header from '../Header/Header';
 import HotelsWidget from '../HotelsWidget/HotelsWidget';
 import FavoritesWidget from '../FavoritesWidget/FavoritesWidget';

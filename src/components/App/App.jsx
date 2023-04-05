@@ -1,15 +1,14 @@
-import './App.css';
 import React, { useEffect } from 'react';
+import './App.css';
 import { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { setFavoritesAction } from '../../store/favoriteHotelsReducer';
+import { fetchHotelsAction } from '../../store/hotelsReducer';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import MainScreen from '../MainScreen/MainScreen';
 import LoginScreen from '../LoginScreen/LoginScreen';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import { fetchHotels } from '../../store/hotelsReducer';
-import { useSelector, useDispatch } from 'react-redux';
 import getCheckoutDate from '../../utils/getCheckoutDate';
-import { setFavoritesAction } from '../../store/favoriteHotelsReducer';
-import { BASE_URL } from '../../utils/consts';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -28,11 +27,9 @@ function App() {
     localStorage.removeItem('authorized');
     localStorage.removeItem('storedFavorites');
     setIsLoggedIn(false);
-    console.log('storage', JSON.parse(localStorage.getItem('storedFavorites')))
-    console.log('store', favorites)
   }
 
-  const firstFetch = () => dispatch(fetchHotels(`${BASE_URL}location=${query.city}&currency=rub&checkIn=${query.checkinDate}&checkOut=${getCheckoutDate(query.checkinDate, query.duration)}&limit=30`))
+  const firstFetch = () => dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: getCheckoutDate(query.checkinDate, query.duration) }))
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => firstFetch, []);
@@ -41,9 +38,7 @@ function App() {
     const storedData = JSON.parse(localStorage.getItem('storedFavorites'));
     if (storedData) {
       dispatch(setFavoritesAction(storedData));
-    } /*else {
-
-    }*/
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

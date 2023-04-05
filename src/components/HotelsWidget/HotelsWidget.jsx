@@ -1,5 +1,5 @@
-import './HotelsWidget.css'
 import React from "react";
+import './HotelsWidget.css'
 import { useSelector } from 'react-redux';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import HotelsList from '../HotelsList/HotelsList';
@@ -7,12 +7,13 @@ import modifyDate from '../../utils/dateModifier';
 import modifyString from '../../utils/stringModifier';
 
 export default function HotelsWidget({ isFavorites }) {
+
   const favorites = useSelector(state => state.favorites.favorites);
   const hotelsToShow = useSelector(state => state.hotels.hotels);
   const query = useSelector(state => state.query.query);
 
   return (
-    <div className="card card_hotels">
+    <div className="hotels card card_hotels">
       <div className="hotels__title-container">
         <div className="hotels__group-container">
           <h2 className="hotels__title">Отели</h2>

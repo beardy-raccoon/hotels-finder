@@ -21,6 +21,7 @@
   width: 255px;
   overflow: hidden;
   text-overflow: ellipsis;
+  margin-top: 19px;
 }
 
 .hotel__title {

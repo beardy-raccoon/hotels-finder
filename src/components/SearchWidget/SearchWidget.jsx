@@ -1,12 +1,11 @@
-import './SearchWidget.css';
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { fetchHotels } from '../../store/hotelsReducer';
+import './SearchWidget.css';
 import Button from '../Button/Button';
+import { useDispatch } from 'react-redux';
+import { fetchHotelsAction } from '../../store/hotelsReducer';
 import { setQueryAction } from '../../store/queryReducer';
 import getCheckoutDate from '../../utils/getCheckoutDate';
 import getCurrentDate from '../../utils/getCurrentDate';
-import { BASE_URL } from '../../utils/consts';
 
 export default function SearchWidget() {
 
@@ -24,43 +23,45 @@ export default function SearchWidget() {
   const handleSearch = (evt) => {
     evt.preventDefault();
     const checkoutDate = getCheckoutDate(query.checkinDate, query.duration);
-    dispatch(fetchHotels(`${BASE_URL}location=${query.city}&currency=rub&checkIn=${query.checkinDate}&checkOut=${checkoutDate}&limit=30`))
+    dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: checkoutDate }))
     dispatch(setQueryAction(query));
   }
 
   return (
-    <form className="card search-form">
-      <label className="search-form__label" htmlFor="city">Локация</label>
-      <input
-        className="input search-form__input"
-        type="text"
-        name="city"
-        value={query.city}
-        onChange={handleChange}
-        required />
-      <label className="search-form__label" htmlFor="chekinDate">Дата заселения</label>
-      <input
-        className="input search-form__input"
-        type="date"
-        name="checkinDate"
-        value={query.checkinDate}
-        onChange={handleChange}
-        required />
-      <label className="search-form__label" htmlFor="duration">Количество дней</label>
-      <input
-        className="input search-form__input"
-        type="number"
-        name="duration"
-        value={query.duration}
-        onChange={handleChange}
-        required />
-      <Button
-        name={'Найти'}
-        selector={'button button__search-widget'}
-        type={'submit'}
-        isDisabled={false}
-        handleClick={handleSearch}
-      />
-    </form>
+    <div className="search-widget card card_search-widget">
+      <form className="search-form">
+        <label className="search-form__label" htmlFor="city">Локация</label>
+        <input
+          className="input search-form__input"
+          type="text"
+          name="city"
+          value={query.city}
+          onChange={handleChange}
+          required />
+        <label className="search-form__label" htmlFor="chekinDate">Дата заселения</label>
+        <input
+          className="input search-form__input"
+          type="date"
+          name="checkinDate"
+          value={query.checkinDate}
+          onChange={handleChange}
+          required />
+        <label className="search-form__label" htmlFor="duration">Количество дней</label>
+        <input
+          className="input search-form__input"
+          type="number"
+          name="duration"
+          value={query.duration}
+          onChange={handleChange}
+          required />
+        <Button
+          name={'Найти'}
+          selector={'button button__search-widget'}
+          type={'submit'}
+          isDisabled={false}
+          handleClick={handleSearch}
+        />
+      </form>
+    </div>
   );
 }

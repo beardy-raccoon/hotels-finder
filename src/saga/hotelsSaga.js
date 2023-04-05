@@ -1,15 +1,15 @@
 import { put, takeEvery, call } from 'redux-saga/effects';
-import { setHotelsAction, FETCH_HOTELS } from '../store/hotelsReducer';
+import { setHotelsAction } from '../store/hotelsReducer';
+import { FETCH_HOTELS } from '../utils/consts';
+import mainApi from '../utils/mainApi';
 
-const fetchHotels = (query) => fetch(query);
-
+const fetch = (query) => mainApi(query);
 
 function* fetchHotelsWorker(action) {
-  const data = yield call(fetchHotels, action.query)
-  const json = yield call(() => new Promise(res => res(data.json())))
-  yield put(setHotelsAction(json))
+  const data = yield call(fetch, action.query);
+  yield put(setHotelsAction(data));
 }
 
 export function* hotelsWatcher() {
-  yield takeEvery(FETCH_HOTELS, fetchHotelsWorker)
+  yield takeEvery(FETCH_HOTELS, fetchHotelsWorker);
 }

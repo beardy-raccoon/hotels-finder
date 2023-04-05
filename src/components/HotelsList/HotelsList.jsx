@@ -1,5 +1,5 @@
-import './HotelsList.css';
 import React from 'react';
+import './HotelsList.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavoriteAction, delFavoriteAction } from '../../store/favoriteHotelsReducer';
 import HotelsItem from '../HotelsItem/HotelsItem';

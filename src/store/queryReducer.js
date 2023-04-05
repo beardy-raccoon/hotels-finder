@@ -1,14 +1,13 @@
+import { SET_QUERY } from "../utils/consts";
 import getCurrentDate from "../utils/getCurrentDate";
 
 const defaultState = {
   query: {
     city: 'Москва',
     checkinDate: `${getCurrentDate()}`,
-    duration: '1'
+    duration: '1',
   },
 }
-
-export const SET_QUERY = "SET_QUERY";
 
 export const queryReducer = (state = defaultState, action) => {
   switch (action.type) {
