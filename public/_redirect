@@ -1,0 +1,1 @@
+/api/* http://engine.hotellook.com/api/v2/:splat 200
