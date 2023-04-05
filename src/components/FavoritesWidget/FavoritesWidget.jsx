@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import HotelsList from '../HotelsList/HotelsList';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFavoritesAction } from '../../store/favoriteHotelsReducer';
+import getSortedHotels from '../../utils/getSortedHotels';
 
 export default function FavoritesWidget({ isFavorites }) {
 
@@ -10,17 +11,13 @@ export default function FavoritesWidget({ isFavorites }) {
   const hotelsToShow = useSelector(state => state.favorites.favorites);
   const dispatch = useDispatch();
 
-  function sortHotels(arr, key) {
-    return arr.sort((a, b) => a[key] > b[key] ? 1 : -1)
-  }
-
   const handleFilter = (key) => {
     if (key === 'priceFrom') {
       setFilter({ ...filter, price: true, rating: false });
-      dispatch(setFavoritesAction(sortHotels(hotelsToShow, key)));
+      dispatch(setFavoritesAction( getSortedHotels(hotelsToShow, key)));
     } else if (key === 'stars') {
       setFilter({ ...filter, price: false, rating: true });
-      dispatch(setFavoritesAction(sortHotels(hotelsToShow, key)));
+      dispatch(setFavoritesAction(getSortedHotels(hotelsToShow, key)));
     }
   }
 

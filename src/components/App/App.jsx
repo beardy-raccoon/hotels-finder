@@ -4,19 +4,19 @@ import { useState } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setFavoritesAction } from '../../store/favoriteHotelsReducer';
-import { fetchHotelsAction } from '../../store/hotelsReducer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import MainScreen from '../MainScreen/MainScreen';
 import LoginScreen from '../LoginScreen/LoginScreen';
-import getCheckoutDate from '../../utils/getCheckoutDate';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const authorized = localStorage.getItem('authorized');
-  const query = useSelector(state => state.query.query);
   const favorites = useSelector(state => state.favorites.favorites);
-  //const hotels = useSelector(state => state.hotels.hotels);
   const dispatch = useDispatch();
+
+  // Обычно в таком хендлере идет запрос на сервер с данными авторизации и
+  // если все ок в ответ приходит токен, который записывается в localStorage,
+  // но в данном случае просто запишем туда, что мы аторизированы.
 
   const handleLogin = () => {
     localStorage.setItem('authorized', true);
@@ -24,19 +24,13 @@ function App() {
   }
 
   const handleSignout = () => {
+    // Очищаем store при выходе из аккаунта, чтобы при повторном входе
+    // без перезагрузке страницы не подтягивались данные из стора
     dispatch(setFavoritesAction([]));
     localStorage.removeItem('authorized');
     localStorage.removeItem('storedFavorites');
     setIsLoggedIn(false);
   }
-
-  const firstFetch = () => dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: getCheckoutDate(query.checkinDate, query.duration) }))
-
-  useEffect(() => {
-    firstFetch();
-    console.log('1st fetch in APP');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     const storedData = JSON.parse(localStorage.getItem('storedFavorites'));
@@ -45,6 +39,16 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Логично, что при перезагрузке страницы избранное не должно сбрасываться,
+  // обычно такие данные хранят на сервере вместе с соответствующим аккаунтом,
+  // Но в данном случае можно сохранить данные в локальном хранилище.
+
+  // Сохраняем данные из избранного в localStorage при изменении favorites
+  // исключаем случай когда массив избранного пустой, чтобы localStorage
+  // не затирало при перезагрузке страницы.
+  // Ручное удаление последнего элемента предусмотрено в хендлере delFavorite
+  // HotelsList.jsx:21
 
   useEffect(() => {
     if (!favorites.length) {

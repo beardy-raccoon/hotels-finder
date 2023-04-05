@@ -11,6 +11,7 @@ export default function SearchWidget() {
 
   const [query, setQuery] = useState({ city: 'Москва', checkinDate: `${getCurrentDate()}`, duration: '1' });
   const dispatch = useDispatch();
+  const checkoutDate = getCheckoutDate(query.checkinDate, query.duration);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -22,18 +23,28 @@ export default function SearchWidget() {
 
   const handleSearch = (evt) => {
     evt.preventDefault();
-    const checkoutDate = getCheckoutDate(query.checkinDate, query.duration);
-    dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: checkoutDate }))
+
+    dispatch(fetchHotelsAction({
+      city: query.city,
+      checkinDate: query.checkinDate,
+      checkoutDate: checkoutDate
+    }));
+
     dispatch(setQueryAction(query));
-  }
+  };
 
-  const firstFetch = () => dispatch(fetchHotelsAction({ city: query.city, checkinDate: query.checkinDate, checkoutDate: getCheckoutDate(query.checkinDate, query.duration) }))
-
-  useEffect(() => {
-    firstFetch();
-    console.log('1st fetch in widget');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // Функция запроса к api при первой загрузке страницы с дефолтными данными
+  const firstFetch = () => dispatch(
+    fetchHotelsAction(
+      {
+        city: query.city,
+        checkinDate: query.checkinDate,
+        checkoutDate: getCheckoutDate(query.checkinDate, query.duration)
+      }
+    ));
+  // useEffect обработает при первой загрузке компонента или перезагрузке страницы
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => firstFetch, []);
 
   return (
     <div className="search-widget card card_search-widget">

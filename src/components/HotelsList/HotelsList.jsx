@@ -10,13 +10,21 @@ export default function HotelsList({ hotels, isFavorites }) {
   const dispatch = useDispatch();
 
   const addFavorite = (hotel) => {
-    const newHotel = { ...hotel, checkinDate: query.checkinDate, duration: query.duration };
+    const newHotel = {
+      ...hotel,
+      checkinDate: query.checkinDate,
+      duration: query.duration
+    };
     dispatch(addFavoriteAction(newHotel));
   }
 
   const delFavorite = (hotelId) => {
     dispatch(delFavoriteAction(hotelId));
-    favorites.length === 1 && localStorage.setItem('storedFavorites', JSON.stringify([]))
+    // При удалении последнего отеля из избранного пока отрабатывает action
+    // обнуляем массив избранного в localStorage, чтобы обойти исключение из
+    // App.jsx:53
+    favorites.length === 1 &&
+      localStorage.setItem('storedFavorites', JSON.stringify([]));
   }
 
   return (
