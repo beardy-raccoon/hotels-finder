@@ -1,0 +1,16 @@
+.image-carousel {
+  max-width: 600px;
+  max-height: 150px;
+  margin-top: 28px;
+}
+
+.image-carousel__image {
+  width: 164px;
+  height: 149px;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.carousel .slider {
+  gap: 12px
+}

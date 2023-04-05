@@ -1,0 +1,8 @@
+.hotels__list {
+  list-style: none;
+  max-height: 515px;
+  overflow-y: scroll;
+  padding: 0 26px 0 0;
+  margin: 28px 0 0;
+  box-sizing: border-box;
+}

@@ -1,0 +1,88 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 472px;
+  padding-right: 12px;
+}
+
+.favorites__title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  color: #424242;
+  margin: 0;
+}
+
+.favorites__filter-container {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-start;
+  margin: 32px 0;
+}
+
+.favorites__filter {
+  height: 28px;
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  border-radius: 4px;
+  padding: 4px 8px;
+  text-align: left;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.408px;
+  color: #99A0A3;
+}
+
+.favorites__filter::after {
+  content: '';
+  background-image: url(../../assets/images/select-min.svg);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  margin-left: 9px;
+}
+
+.favorites__filter_active::after {
+  background-image: url(../../assets/images/select-active-min.svg);
+}
+
+.favorites__filter_active {
+  border: 1px solid #41522E;
+  color: #41522E;
+}
+
+.favorites__filter_rating {
+  width: 89px;
+}
+
+.favorites__filter_price {
+  width: 71px;
+}
+
+.hotels__list_favorites {
+  list-style: none;
+  max-height: 290px;
+  max-width: 296px;
+  overflow-y: scroll;
+  padding: 0 20px 0 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.hotel__button-container_favorites {
+  margin-left: 0;
+}
+
+.hotel__info-container_favorites {
+  width: 210px;
+  margin-top: 0;
+}

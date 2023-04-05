@@ -1,0 +1,69 @@
+.card_hotels {
+  width: 664px;
+  max-height: 906px;
+  padding: 48px 32px 52px 32px;
+}
+
+.hotels__title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hotels__group-container {
+  display: flex;
+  align-items: center;
+}
+
+.hotels__title {
+  margin: 0;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 38px;
+  color: #424242;
+}
+
+.hotels__arrow {
+  background-image: url(../../assets/images/arrow-min.svg);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 8.67px;
+  height: 17.33px;
+  margin: 0 20px 0;
+}
+
+.hotels__subtitle {
+  margin: 0;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  color: #41522E;
+}
+
+.hotels__favorite-counter-container {
+  display: flex;
+  margin-top: 28px;
+}
+
+.hotels__favorite-counter {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #424242;
+  margin: 0;
+}
+
+.hotels__count {
+  margin: 0 4px 0 8px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 22px;
+  letter-spacing: -0.408px;
+  color: #41522E;
+}
